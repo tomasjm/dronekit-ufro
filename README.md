@@ -27,7 +27,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -35,7 +34,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/tomasjm/dronekit-ufro">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="logo.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Drone UFRO</h3>
@@ -43,10 +42,10 @@
   <p align="center">
     Código y documentación del desarrollo del Drone.
     <br />
-    <a href="https://github.com/tomasjm/dronekit-ufro"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/tomasjm/dronekit-ufro"><strong>Documentación</strong></a>
     <br />
     <br />
-    <a href="https://github.com/tomasjm/dronekit-ufro/issues">dronekit-ufrortar Bug</a>
+    <a href="https://github.com/tomasjm/dronekit-ufro/issues">Reportar Bug</a>
     ·
     <a href="https://github.com/tomasjm/dronekit-ufro/issues">Solicitar Mejora</a>
   </p>
@@ -57,17 +56,18 @@
 <!-- TABLE OF CONTENTS -->
 ## Contenidos
 
-* [Sobre el proyecto](#about-the-project)
-  * [Construido con](#built-with)
-* [Como comenzar](#getting-started)
-  * [Requisitos previos](#prerequisites)
-  * [Instalación](#installation)
-* [Uso](#usage)
-* [Roadmap](#roadmap)
-* [Contribuir](#contributing)
-* [Licencia](#license)
-* [Contacto](#contact)
-* [Acknowledgements](#acknowledgements)
+- [Contenidos](#contenidos)
+- [Sobre el proyecto](#sobre-el-proyecto)
+  - [Construido con](#construido-con)
+- [Como comenzar](#como-comenzar)
+  - [Requisitos](#requisitos)
+  - [Instalación y configuración de hardware](#instalaci%c3%b3n-y-configuraci%c3%b3n-de-hardware)
+  - [Instalación](#instalaci%c3%b3n)
+- [Modo de uso](#modo-de-uso)
+- [Roadmap](#roadmap)
+- [Licencia](#licencia)
+- [Contacto](#contacto)
+- [Agradecimientos](#agradecimientos)
 
 
 
@@ -80,9 +80,9 @@ Proyecto que se basa en la construcción de un Drone **programable y automatico*
 
 ### Construido con
 
-* []()
-* []()
-* []()
+* [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
+* [Emlid Navio2](https://emlid.com/navio/)
+* [Dronekit](https://dronekit.io/)
 
 
 
@@ -100,9 +100,9 @@ En este repositorio se encuentra el código y los scripts para realizar la autom
 
 El drone está construido con la placa Emlid Navio2 que es un shield de raspberry pi 3 para drones, contiene todo lo necesario para hacer funcionar un drone.
 
-### Configuración de la placa
+### Instalación y configuración de hardware
  
-1. Clone the dronekit-ufro
+1. Es necesario hacer uso de 
 ```sh
 git clone https:://github.com/tomasjm/dronekit-ufro.git
 ```
@@ -125,7 +125,7 @@ npm install
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Modo de uso
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
@@ -140,41 +140,30 @@ See the [open issues](https://github.com/tomasjm/dronekit-ufro/issues) for a lis
 
 
 
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
 <!-- LICENSE -->
-## License
+## Licencia
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distribuido bajo la licencia MIT.
 
 
 
 <!-- CONTACT -->
-## Contact
+## Contacto
 
-Your Name - [@TomJimenez05](https://twitter.com/TomJimenez05) - t.jimenez03@ufromail.cl
+Tomás Jiménez - [@TomJimenez05](https://twitter.com/TomJimenez05) - t.jimenez03@ufromail.cl
 
-Project Link: [https://github.com/tomasjm/repo](https://github.com/tomasjm/repo)
+Arturo Avendaño - [@TomJimenez05](https://twitter.com/TomJimenez05) - t.jimenez03@ufromail.cl
+
+Link del proyecto: [https://github.com/tomasjm/dronekit-ufro](https://github.com/tomasjm/dronekit-ufro)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
+## Agradecimientos
 
-* []()
-* []()
-* []()
+* [Universidad de la Frontera](https://www.ufro.cl/)
+* [Departamento de Ingenieria Electrica](http://www.inele.ufro.cl/)
+* [Ingenieria Civil Electronica](http://icelectronica.ufro.cl/)
 
 
 
@@ -182,16 +171,16 @@ Project Link: [https://github.com/tomasjm/repo](https://github.com/tomasjm/repo)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/tomasjm/dronekit-ufro.svg?style=flat-square
+[contributors-url]: https://github.com/tomasjm/dronekit-ufro/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/tomasjm/dronekit-ufro.svg?style=flat-square
+[forks-url]: https://github.com/tomasjm/dronekit-ufro/network/members
+[stars-shield]: https://img.shields.io/github/stars/tomasjm/dronekit-ufro.svg?style=flat-square
+[stars-url]: https://github.com/tomasjm/dronekit-ufro/stargazers
+[issues-shield]: https://img.shields.io/github/issues/tomasjm/dronekit-ufro.svg?style=flat-square
+[issues-url]: https://github.com/tomasjm/dronekit-ufro/issues
+[license-shield]: https://img.shields.io/github/license/tomasjm/dronekit-ufro.svg?style=flat-square
+[license-url]: https://github.com/tomasjm/dronekit-ufro/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://linkedin.com/in/tomasjm
 [product-screenshot]: images/screenshot.png
