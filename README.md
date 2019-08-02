@@ -62,7 +62,7 @@
 - [Como comenzar](#como-comenzar)
   - [Requisitos](#requisitos)
   - [Instalación y configuración de hardware](#instalaci%c3%b3n-y-configuraci%c3%b3n-de-hardware)
-  - [Instalación](#instalaci%c3%b3n)
+  - [Instalación y configuración del repositorio](#instalaci%c3%b3n-y-configuraci%c3%b3n-del-repositorio)
 - [Modo de uso](#modo-de-uso)
 - [Roadmap](#roadmap)
 - [Licencia](#licencia)
@@ -74,7 +74,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre el proyecto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
 Proyecto que se basa en la construcción de un Drone **programable y automatico**, y a la vez, que sea **accesible/economico**.
 
@@ -102,41 +102,58 @@ El drone está construido con la placa Emlid Navio2 que es un shield de raspberr
 
 ### Instalación y configuración de hardware
  
-1. Es necesario hacer uso de 
-```sh
-git clone https:://github.com/tomasjm/dronekit-ufro.git
-```
-2. Install NPM packages
-```sh
-npm install
-```
+ Es necesario hacer uso de la [documentación](https://docs.emlid.com/navio2/) entregada por Emlid que explica como configurar e instalar todo el hardware.
+ Para continuar, es necesario realizar hasta la configuración del servicio de Ardupilot en la sección Ardupilot de la documentación de Emlid.
 
-### Instalación
+ **Es necesario, que durante la instalación de los servicios de Ardupilot, se actualice lo siguiente:** 
+ 1. La distribución Raspbian de Emlid.
+```sh
+sudo apt-get update && sudo apt-get dist-upgrade
+```
+ 2. Los paquetes de python, especificamente pymavlink, mavlink y mavproxy.
+```sh
+pip install pymavlink mavlink mavproxy
+```
+### Instalación y configuración del repositorio
+
+El objetivo es configurar e instalar el sistema de automatización del Drone que respecta a configurar [MavProxy](http://ardupilot.github.io/MAVProxy/html/index.html) que servirá como intermediario entre la comunicación de los centros de control ([QGroundControl](http://qgroundcontrol.com/)) del drone en conjunto del código de automatización y el servicio de Ardupilot.
  
-1. Clone the dronekit-ufro
+1. Clonar dronekit-ufro
 ```sh
 git clone https:://github.com/tomasjm/dronekit-ufro.git
 ```
-2. Install NPM packages
+2. Editar los scripts
 ```sh
-npm install
+vim iniciarMavproxy.sh
 ```
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Modo de uso
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+1. Se inicia el servicio ardupilot
+```sh
+sudo systemctl start ardupilot
+```
+2. Se inicia mavproxy
+```sh
+./iniciarMavproxy.sh
+```
+3. Se conecta QGroundControl
+```sh
+sudo chmod +x QGroundControl.AppImage
+./QGroundControl.AppImage
+```
+1. Se ejecuta el script de dronekit
+```sh
+python script.py --connect "tcp/udp:LA_DIRECCION_IP:PUERTO"
+```
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/tomasjm/dronekit-ufro/issues) for a list of proposed features (and known issues).
+Revisar [open issues](https://github.com/tomasjm/dronekit-ufro/issues) para obtener una lista de futuras caracteristicas y los bugs conocidos.
 
 
 
@@ -150,9 +167,9 @@ Distribuido bajo la licencia MIT.
 <!-- CONTACT -->
 ## Contacto
 
-Tomás Jiménez - [@TomJimenez05](https://twitter.com/TomJimenez05) - t.jimenez03@ufromail.cl
+Tomás Jiménez - [@tomasjm](https://www.github.com/tomasjm) - t.jimenez03@ufromail.cl
 
-Arturo Avendaño - [@TomJimenez05](https://twitter.com/TomJimenez05) - t.jimenez03@ufromail.cl
+Arturo Avendaño - [@ArturoAvendano](https://www.github.com/ArturoAvendano) - a.avendano04@ufromail.cl
 
 Link del proyecto: [https://github.com/tomasjm/dronekit-ufro](https://github.com/tomasjm/dronekit-ufro)
 
@@ -179,8 +196,6 @@ Link del proyecto: [https://github.com/tomasjm/dronekit-ufro](https://github.com
 [stars-url]: https://github.com/tomasjm/dronekit-ufro/stargazers
 [issues-shield]: https://img.shields.io/github/issues/tomasjm/dronekit-ufro.svg?style=flat-square
 [issues-url]: https://github.com/tomasjm/dronekit-ufro/issues
-[license-shield]: https://img.shields.io/github/license/tomasjm/dronekit-ufro.svg?style=flat-square
-[license-url]: https://github.com/tomasjm/dronekit-ufro/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/tomasjm
+[license-shield]: https://img.shields.io/github/license/tomasjm/dronekit-ufro?style=flat-square
+[license-url]: https://github.com/tomasjm/dronekit-ufro
 [product-screenshot]: images/screenshot.png
