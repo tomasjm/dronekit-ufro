@@ -109,7 +109,7 @@ def goto(vehicle, dNorth, dEast):
             vehicle.location.global_relative_frame, targetLocation)
         print("Distance to target: ", remainingDistance)
         # Just below target, in case of undershoot.
-        if remainingDistance <= targetDistance*0.035 or remainingDistance <= 0.85:
+        if remainingDistance <= targetDistance*0.035 or remainingDistance <= 1.8:
             print("Reached target")
             break
         time.sleep(2)
