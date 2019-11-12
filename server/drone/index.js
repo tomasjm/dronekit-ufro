@@ -41,6 +41,20 @@ app.get("/start_streaming_drone", (req, res) => {
     response: true
   });
 });
+
+app.get("/fly", (req, res) => {
+  // se inicia el Listen de ffmpeg del video de raspivid y se redirecciona a rtmp de node media server que esta en la central
+  exec(
+    "python ~/dronecode/main.py --connect udp:192.168.8.120:14555",
+    () => {}
+  );
+  res.send({
+    response: true
+  });
+  
+});
+
+
 app.listen(3000, () => {
   console.log("Servidor andando en puerto 3000");
 });
