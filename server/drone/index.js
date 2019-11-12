@@ -27,14 +27,17 @@ app.use(express.json());
 /** -------------------------------
  * DATOS SERVIDOR ESPECIFICO
  */
-let ip_server = "190.114.255.51:3976"; 
+let ip_server = "190.114.255.51; 
+let puerto_api = '3976';
+let puerto_rtmp = '1935';
 let user_server = "j.martinez09@ufromail.cl";
 let user_passw = "123456";
 let token = '';
-let movil = 'LASPILAS';
+let movil = 'camion1';
+let tipo = 'd1b4':
 
 // SE PROCEDE A LOGUEAR EN EL SERVIDOR, OBTENIENDOSE EL TOKEN
-fetch(`http://${ip_server}/api/usuario/login`, {
+fetch(`http://${ip_server}:${puerto_api}/api/usuario/login`, {
   method: 'POST', // or 'PUT'
   body: JSON.stringify({ "email": user_server, "clave": user_passw }), // data can be `string` or {object}!
   headers:{
@@ -63,13 +66,14 @@ app.get("/", (req, res) => {
 app.get("/start_streaming_drone_toserver", (req, res) => {
   // se inicia el Listen de ffmpeg del video de raspivid y se redirecciona a rtmp de node media server que esta en la central
   exec(
-    `nc -l 2222 | ffmpeg -i - -c copy -f flv rtmp://192.168.3.136:1935/live/d1?token=${token}&movil=${movil}`,
+    `nc -l 2222 | ffmpeg -i - -c copy -f flv "rtmp://${ip_server}:${puerto_rtmp}/live/${tipo}?token=${token}&movil=${movil}"`,
     () => {}
   );
   // raspivid -t 0 -w 500 -h 500 -fps 20 -o - | nc 0.0.0.0 2222
   exec("raspivid -t 0 -w 500 -h 500 -fps 20 -o - | nc 0.0.0.0 2222", () => {});
   res.send({
-    response: true
+    response: true,
+    ruta: `nc -l 2222 | ffmpeg -i - -c copy -f flv "rtmp://${ip_server}:${puerto_rtmp}/live/${tipo}?token=${token}&movil=${movil}"`
   });
 });
 
