@@ -12,16 +12,16 @@ def Control_Box(node_ip, foco_state, camara_state):
     R4 = '1'
     response = requests.get(
         str('http://'+node_ip+'/relay?R1='+R1+'&R2='+R2+'&R3='+R3+'&R4='+R4+'/'))
-    print(response)
+    print("Se ejecuto la peticion al arduino")
     sleep(1)
-    response = request.get(str('http://192.168.8.120:3000/start_stream_drone'))
-    print(response)
+    response = request.get(str('http://192.168.8.130:3000/start_stream_drone'))
+    print("Se ejecuto la peticion de iniciar stream del drone")
     sleep(1)
-    response =request.get(str('http://192.168.8.120:3000/start_mission'))
-    print(response)
+    response =request.get(str('http://192.168.8.130:3000/start_mission'))
+    print("Se ejecuto la peticion para iniciar el vuelo")
     sleep(60)
-    response = request.get(str('http://192.168.120:3000/start_stream_central'))
-    print(response)
+    response = request.get(str('http://192.168.8.130:3000/start_stream_central'))
+    print("Se ejecuto la peticion para iniciar stream de camaraip")
 
 
 b = gpio.Button(6, pull_up=True)
