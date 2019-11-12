@@ -16,6 +16,7 @@ const express = require("express");
 const cors = require("cors");
 const sys = require("sys");
 const exec = require("child_process").exec;
+const fetch = require('node-fetch');
 let listening_stream;
 
 // Configuración de express
