@@ -30,7 +30,7 @@ app.use(express.json());
 /** -------------------------------
  * DATOS SERVIDOR ESPECIFICO
  */
-let ip_server = "190.114.255.51:3976"; 
+let ip_server = "190.114.255.51"; 
 let puerto_api = '3976';
 let puerto_rtmp = '1935';
 let user_server = "j.martinez09@ufromail.cl";
