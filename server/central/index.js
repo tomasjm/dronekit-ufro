@@ -36,7 +36,7 @@ let token = '';
 let movil = 'LASPILAS2';
 
 // SE PROCEDE A LOGUEAR EN EL SERVIDOR, OBTENIENDOSE EL TOKEN
-fetch(url, {
+fetch(`http://${ip_server}/api/usuario/login`, {
   method: 'POST', // or 'PUT'
   body: JSON.stringify({ "email": user_server, "clave": user_passw }), // data can be `string` or {object}!
   headers:{
