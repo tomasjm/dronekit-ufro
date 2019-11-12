@@ -34,7 +34,7 @@ let user_server = "j.martinez09@ufromail.cl";
 let user_passw = "123456";
 let token = '';
 let movil = 'camion1';
-let tipo = 'd1b4':
+let tipo = 'd1b4';
 
 // SE PROCEDE A LOGUEAR EN EL SERVIDOR, OBTENIENDOSE EL TOKEN
 fetch(`http://${ip_server}:${puerto_api}/api/usuario/login`, {
