@@ -13,6 +13,7 @@ def Control_Box(node_ip, foco_state, camara_state):
     response = requests.get(
         str('http://'+node_ip+'/relay?R1='+R1+'&R2='+R2+'&R3='+R3+'&R4='+R4+'/'))
     print("Se ejecuto la peticion al arduino")
+    if (foco_state == 1 and camara_state == 1): return
     sleep(1)
     response = request.get(str('http://192.168.8.130:3000/start_stream_drone'))
     print("Se ejecuto la peticion de iniciar stream del drone")
