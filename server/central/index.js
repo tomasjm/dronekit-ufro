@@ -28,7 +28,7 @@ app.use(express.json());
  * Si el cliente no recibe el response: true, no continuara su ejecucion
  */
 app.get("/", (req, res) => {
-  res.send({ response: true });
+  res.send({ response: true, "message": "Central" });
 });
 
 app.get("/start_stream_drone", (req, res) => {
