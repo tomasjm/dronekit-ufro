@@ -21,6 +21,32 @@ let app = express();
 app.use(cors());
 app.use(express.json());
 
+
+
+/** -------------------------------
+ * DATOS SERVIDOR ESPECIFICO
+ */
+let ip_server = "190.114.255.51:3976"; 
+let user_server = "j.martinez09@ufromail.cl";
+let user_passw = "123456";
+let token = '';
+let movil = 'LASPILAS';
+
+// SE PROCEDE A LOGUEAR EN EL SERVIDOR, OBTENIENDOSE EL TOKEN
+fetch(url, {
+  method: 'POST', // or 'PUT'
+  body: JSON.stringify({ "email": user_server, "clave": user_passw }), // data can be `string` or {object}!
+  headers:{
+    'Content-Type': 'application/json'
+  }
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => {
+  token = response.token;
+});
+
+
+
 // Ruta de confirmacion para el cliente
 /**
  * Si el cliente no recibe el response: true, no continuara su ejecucion
@@ -28,6 +54,27 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send({ response: true });
 });
+
+
+/**
+ * STREAMING EN EL SERVIDOR ESPECIFICO
+ */
+app.get("/start_streaming_drone_toserver", (req, res) => {
+  // se inicia el Listen de ffmpeg del video de raspivid y se redirecciona a rtmp de node media server que esta en la central
+  exec(
+    `nc -l 2222 | ffmpeg -i - -c copy -f flv rtmp://192.168.3.136:1935/live/d1?token=${token}&movil=${movil}`,
+    () => {}
+  );
+  // raspivid -t 0 -w 500 -h 500 -fps 20 -o - | nc 0.0.0.0 2222
+  exec("raspivid -t 0 -w 500 -h 500 -fps 20 -o - | nc 0.0.0.0 2222", () => {});
+  res.send({
+    response: true
+  });
+});
+
+/**
+ * STREAMING EN EL SERVIDOR LOCAL
+ */
 
 app.get("/start_streaming_drone", (req, res) => {
   // se inicia el Listen de ffmpeg del video de raspivid y se redirecciona a rtmp de node media server que esta en la central
@@ -42,6 +89,10 @@ app.get("/start_streaming_drone", (req, res) => {
   });
 });
 
+/**
+ * EJECUTAR DRONECODE/MAIN.PY, SCRIPT DE VUELO
+ */
+
 app.get("/fly", (req, res) => {
   // se inicia el Listen de ffmpeg del video de raspivid y se redirecciona a rtmp de node media server que esta en la central
   exec(
@@ -55,6 +106,9 @@ app.get("/fly", (req, res) => {
 });
 
 
+/**
+ * INICIALIZA EL SERVIDOR
+ */
 app.listen(3000, () => {
   console.log("Servidor andando en puerto 3000");
 });
