@@ -31,10 +31,13 @@ app.use(express.json());
  * DATOS SERVIDOR ESPECIFICO
  */
 let ip_server = "190.114.255.51:3976"; 
+let puerto_api = '3976';
+let puerto_rtmp = '1935';
 let user_server = "j.martinez09@ufromail.cl";
 let user_passw = "123456";
 let token = '';
-let movil = 'LASPILAS2';
+let tipo = 'camara1';
+let movil = 'camion1';
 
 // SE PROCEDE A LOGUEAR EN EL SERVIDOR, OBTENIENDOSE EL TOKEN
 fetch(`http://${ip_server}/api/usuario/login`, {
@@ -52,11 +55,12 @@ fetch(`http://${ip_server}/api/usuario/login`, {
 // ENVIAR STREAM DE CAMARA IPTV A SERVIDOR ESPECIFICO
 app.get("/start_stream_central_toserver", (req, res) => {
   exec(
-    "ffmpeg -i rtmp://192.168.8.160:1935/flash/11:admin:admin -c copy -r 1 -f flv rtmp://192.168.3.136:1935/live/d1?token=${token}&movil=${movil}`",
+    `ffmpeg -i rtmp://192.168.8.160:1935/flash/11:admin:admin -c copy -r 1 -f flv "rtmp://${ip_server}:${puerto_rtmp}/live/${tipo}?token=${token}&movil=${movil}"`,
     () => {}
   );
   res.send({
-    response: true
+    response: true,
+    ruta: `ffmpeg -i rtmp://192.168.8.160:1935/flash/11:admin:admin -c copy -r 1 -f flv "rtmp://${ip_server}:${puerto_rtmp}/live/${tipo}?token=${token}&movil=${movil}"`
   });
 });
 
